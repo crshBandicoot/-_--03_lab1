@@ -3,20 +3,20 @@ from random import choices, randint
 from matplotlib import pyplot
 from LongInt import LongInt
 
-# for i in range(10):
-#     print(i)
-#     a = LongInt(''.join(choices('0123456789abcdef', k=128)))
-#     b = LongInt(''.join(choices('0123456789abcdef', k=128)))
-#     c = LongInt(''.join(choices('0123456789abcdef', k=3)))
-#     mod = LongInt(''.join(choices('0123456789abcdef', k=randint(2, 64))))
-#     if (a % mod) != (a - ((a/mod)[0]*mod)):
-#         print('ERROR1')
-#     if (a.add_mod(b, mod)) != ((a+b) - ((a+b)/mod)[0]*mod):
-#         print('ERROR2')
-#     if (a.sub_mod(b, mod)) != ((a-b) - ((a-b)/mod)[0]*mod):
-#         print('ERROR3')
-#     if (a*b % mod) != (a.mul_mod(b, mod)):
-#         print('ERROR4')
+for i in range(10):
+    print(i)
+    a = LongInt(''.join(choices('0123456789abcdef', k=128)))
+    b = LongInt(''.join(choices('0123456789abcdef', k=128)))
+    c = LongInt(''.join(choices('0123456789abcdef', k=3)))
+    mod = LongInt(''.join(choices('0123456789abcdef', k=randint(2, 64))))
+    if (a % mod) != (a - ((a/mod)[0]*mod)):
+        print('ERROR1')
+    if (a.add_mod(b, mod)) != ((a+b) - ((a+b)/mod)[0]*mod):
+        print('ERROR2')
+    if (a.sub_mod(b, mod)) != ((a-b) - ((a-b)/mod)[0]*mod):
+        print('ERROR3')
+    if (a*b % mod) != (a.mul_mod(b, mod)):
+        print('ERROR4')
 
 
 start_init = time()
