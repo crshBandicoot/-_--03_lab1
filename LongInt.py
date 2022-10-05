@@ -1,4 +1,5 @@
 from textwrap import wrap
+from random import randint
 
 
 class LongInt:
@@ -102,6 +103,8 @@ class LongInt:
         return LongInt(self.from_binary(binary[value:] + '0' * value))
 
     def __rshift__(self, value):
+        if value == 0:
+            return self
         binary = self.to_binary()
         return LongInt(self.from_binary('0' * value + binary[:-value]))
 
@@ -278,8 +281,34 @@ class LongInt:
                             result = t - mod
                     else:
                         result = result - (result/mod)[0]*mod
-
         return result
+
+    def randrange(self, start, stop):
+        start = int(str(start), base=16)
+        stop = int(str(stop), base=16)
+        return LongInt(hex(randint(start, stop))[2:])
+
+    def miller_rabin(self, tries):
+        if str(self) == '2':
+            return True
+        if self.is_even():
+            return False
+        r = 0
+        d = self - LongInt('1')
+        while d.is_even():
+            r += 1
+            d = d >> 1
+        prime = True
+        for _ in range(tries):
+            a = self.randrange(LongInt('2'), self-LongInt('1'))
+            if str(a.pow_barrett(d, self)) == '1':
+                break
+            for i in range(r):
+                if a.pow_barrett(d << (2*i), self) == self - LongInt('1'):
+                    break
+            else:
+                prime = False
+        return prime
 
     def __eq__(self, other):
         if self.number == other.number:
@@ -316,3 +345,4 @@ class LongInt:
         if not repr:
             repr = '0'
         return repr
+
