@@ -298,16 +298,17 @@ class LongInt:
         while d.is_even():
             r += 1
             d = d >> 1
+        prime = True
         for _ in range(tries):
             a = self.randrange(LongInt('2'), self-LongInt('1'))
             if str(a.pow_barrett(d, self)) == '1':
-                continue
+                break
             for i in range(r):
                 if a.pow_barrett(d << (2*i), self) == self - LongInt('1'):
                     break
             else:
-                return False
-        return True
+                prime = False
+        return prime
 
     def __eq__(self, other):
         if self.number == other.number:
@@ -344,5 +345,4 @@ class LongInt:
         if not repr:
             repr = '0'
         return repr
-
 
