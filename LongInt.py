@@ -254,7 +254,7 @@ class LongInt:
             if result > mod:
                 if mod.is_2_pow():
                     result = result.to_binary()[-mod.elder_bit():]
-                    result = LongInt(self.from_binary('0' * (result.length * 4 - len(result)) + result))
+                    result = LongInt(self.from_binary('0' * (len(result) * 4 - len(result)) + result))
                 elif result.elder_bit() < mod.elder_bit()*2:
                     k = mod.elder_bit() + 1
                     r = ((LongInt('1') << (2*k))/mod)[0]
@@ -270,7 +270,7 @@ class LongInt:
                 if result > mod:
                     if mod.is_2_pow():
                         result = result.to_binary()[-mod.elder_bit():]
-                        result = LongInt(self.from_binary('0' * (result.length * 4 - len(result)) + result))
+                        result = LongInt(self.from_binary('0' * (len(result) * 4 - len(result)) + result))
                     elif result.elder_bit() < mod.elder_bit()*2:
                         k = mod.elder_bit() + 1
                         r = ((LongInt('1') << (2*k))/mod)[0]
@@ -298,17 +298,16 @@ class LongInt:
         while d.is_even():
             r += 1
             d = d >> 1
-        prime = True
         for _ in range(tries):
             a = self.randrange(LongInt('2'), self-LongInt('1'))
             if str(a.pow_barrett(d, self)) == '1':
-                break
+                continue
             for i in range(r):
                 if a.pow_barrett(d << (2*i), self) == self - LongInt('1'):
                     break
             else:
-                prime = False
-        return prime
+                return False
+        return True
 
     def __eq__(self, other):
         if self.number == other.number:
@@ -345,4 +344,5 @@ class LongInt:
         if not repr:
             repr = '0'
         return repr
+
 
