@@ -52,9 +52,11 @@ class GaloisFieldPolynom:
 
     def trace(self):
         result = GaloisFieldPolynom('0')
-        for i in range(self.deg):
-            print(i)
-            result = result + self **(2**i)
+        prev = self
+        for _ in range(0, self.deg):
+            val = prev*prev
+            result += val
+            prev = val
         return result
 
     def inverse(self):
@@ -68,9 +70,3 @@ class GaloisFieldPolynom:
         if repr:
             return repr
         return '0'
-
-
-a = GaloisFieldPolynom('11101')
-
-
-print(a.trace())
