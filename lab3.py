@@ -66,11 +66,12 @@ end_pow = time()
 
 
 init = end_init - start_init
-inverse = (end_inverse - start_inverse- init/1000)
+inverse = (end_inverse - start_inverse - init/1000)
 trace = (end_trace - start_trace - init/1000)
 add = (end_add - start_add - init*2/1000)/10
 mul = (end_mul - start_mul - init*2/1000)/10
 pow = (end_pow - start_pow - init/1000)/10
-
+print(f'{trace=}')
+print(f'{inverse=}')
 pyplot.bar(['add', 'mul', 'pow'], [add, mul, pow])
 pyplot.show()
