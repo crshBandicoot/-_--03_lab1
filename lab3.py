@@ -1,5 +1,5 @@
 from time import time
-from random import choices, randint
+from random import choices
 from matplotlib import pyplot
 from GaloisField import GaloisFieldPolynom
 
@@ -9,14 +9,8 @@ for i in range(1):
     b = GaloisFieldPolynom(''.join(choices('01', k=128)))
     c = GaloisFieldPolynom(''.join(choices('01', k=3)))
     if (a+b)*c != (a*c + b*c):
-        print((a+b)*c)
-        print(a*c + b*c)
-        print(a)
-        print(b)
-        print(c)
         raise Exception
     if a**(2**a.deg - 1) != GaloisFieldPolynom('1'):
-        print(a)
         raise Exception
     result = GaloisFieldPolynom('1')
     for _ in range(1000):
