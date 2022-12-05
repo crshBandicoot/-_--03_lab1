@@ -53,7 +53,7 @@ class GaloisFieldPolynom:
     def trace(self):
         result = GaloisFieldPolynom('0')
         prev = self
-        for _ in range(0, self.deg):
+        for _ in range(self.deg):
             val = prev*prev
             result += val
             prev = val
