@@ -68,6 +68,12 @@ class GaloisFieldPolynom:
         vector = self.vector[-value:] + self.vector[:-value]
         return GaloisFieldPolynom(vector)
 
+    def __eq__(self, other):
+        return self.vector == other.vector
+
+    def __ne__(self, other):
+        return self.vector != other.vector
+
     def __repr__(self) -> str:
         repr = self.vector.lstrip('0')
         if repr:
