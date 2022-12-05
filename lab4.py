@@ -67,5 +67,5 @@ mul = (end_mul - start_mul - init*2/1000)/10
 pow = (end_pow - start_pow - init/1000)/10
 print(f'{trace=}')
 print(f'{inverse=}')
-pyplot.bar(['add', 'mul', 'pow'], [add, mul, pow])
+pyplot.bar(['add', 'mul', 'pow'], [addz, mul, pow])
 pyplot.show()

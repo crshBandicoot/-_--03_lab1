@@ -79,6 +79,3 @@ class GaloisFieldPolynom:
         if repr:
             return repr
         return '0'
-
-
-
