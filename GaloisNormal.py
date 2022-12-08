@@ -43,13 +43,9 @@ class GaloisFieldPolynom:
         return str(result % 2)
 
     def trace(self):
-        result = GaloisFieldPolynom('0')
-        prev = self
-        for _ in range(self.deg):
-            val = prev*prev
-            result += val
-            prev = val
-        return result
+        val = self.vector.count('1') %2
+        val = str(val)
+        return GaloisFieldPolynom(val)
 
     def inverse(self):
         return self**((2**self.deg) - 2)
