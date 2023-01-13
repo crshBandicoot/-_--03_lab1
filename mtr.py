@@ -15,3 +15,4 @@ matrix = tuple(matrix)
 
 with open('mul_matrix.txt', 'w+') as fout:
     fout.write(str(matrix))
+

@@ -69,3 +69,4 @@ print(f'{trace=}')
 print(f'{inverse=}')
 pyplot.bar(['add', 'mul', 'pow'], [add, mul, pow])
 pyplot.show()
+

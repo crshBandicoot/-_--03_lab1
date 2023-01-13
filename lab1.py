@@ -113,3 +113,4 @@ pyplot.bar(['init', 'to_bin', 'from_bin', 'lshift', 'rshift', 'elder_bit', 'add'
 pyplot.figure()
 pyplot.bar(['mul', 'div'], [mul, div])
 pyplot.show()
+

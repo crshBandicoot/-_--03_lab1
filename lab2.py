@@ -97,3 +97,4 @@ pow_barrett = (end_pow_barrett - start_pow_barrett-init*2/100)/10
 miller_rabin = (end_miller_rabin-start_miller_rabin-init/100)/10
 pyplot.bar(['gcd', 'lcm', 'add_mod', 'sub_mod', 'mul_mod', 'pow_barrett'], [gcd, lcm, add_mod, sub_mod, mul_mod, pow_barrett])
 pyplot.show()
+
